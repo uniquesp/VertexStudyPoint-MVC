@@ -9,3 +9,8 @@ target/
 
 # Ignore Eclipse .project file
 .project
+
+#class
+.class
+
+build/

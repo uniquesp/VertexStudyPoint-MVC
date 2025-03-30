@@ -1,0 +1,114 @@
+.container {
+    display: flex;
+  
+  }
+  
+  .div1 {
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .div2 {
+    flex: 1;
+    height: auto;
+    margin-left: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .div1 .button-container{
+    margin-right: 10px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    background-color: #1f8b4d;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px;
+  }
+  .button-container button:not(:last-child) {
+    margin-right: 5px;
+  }
+  .button-container button:hover {
+    background-color: #fff;
+  }
+  
+  /*.my-image {
+    position: relative;
+    top: 10%;
+    left: 60%;
+    width: auto;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .div2 button {
+    padding: 10px 20px;
+    display: flex;
+    background-color: #1f8b4d;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    justify-content: center;
+    margin:auto;
+    align-items: center;
+  }*/
+  .my-image {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    width: auto;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .div2 button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1f8b4d;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px;
+  }
+  
+  .div2 button:hover {
+    background-color: #fff;
+  }
+  

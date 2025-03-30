@@ -12,11 +12,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `ReadingHall`
 --
   CREATE TABLE IF NOT EXISTS `Reading_hall` (
-    `H_id` int(11)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `H_type` varchar(30) DEFAULT NULL,
+    `hall_id` int(11)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `hall_type` varchar(30) DEFAULT NULL,
     `seat_no` varchar(10) DEFAULT NULL,
-    `status`  varchar(10) DEFAULT NULL,
- `date_registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    `seat_status`  varchar(10) DEFAULT NULL,
+ 	`date_registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
  ) ;
 
 
@@ -59,18 +59,21 @@ INSERT INTO membership VALUES(5,'Best',450,'Breakfast Only Tea/Coffee, 3 Times a
 --
 CREATE TABLE IF NOT EXISTS `student` (
   `s_id` int(11) PRIMARY KEY AUTO_INCREMENT,
-  `s_FullName` varchar(100) DEFAULT NULL,
-  `EmailId` varchar(100) DEFAULT NULL,
-  `ContactNo` char(10) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `email_id` varchar(100) DEFAULT NULL,
+  `phone_no` char(10) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
-  `dob` date  NOT NULL,
+  `dob` date NOT NULL,
   `s_Address` varchar(255) DEFAULT NULL,
   `study` varchar(20) NOT NULL,  
   `hall_type` varchar(20) NOT NULL, 
   `seat_no` varchar(10) NOT NULL,
   `Password` varchar(100) DEFAULT NULL,
- `date_registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `isdeleted int DEFAULT 0, 
+  `date_registered` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 ----------------------------------------------------------
