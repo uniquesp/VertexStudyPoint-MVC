@@ -40,6 +40,7 @@ public class AdminDaoImplementation implements AdminDao {
 	@Override
 	public JsonObject showCounts() {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
