@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class StudentDTO {
-    private int sId;
+    private int student_id;
     private String firstName;
     private String lastName;
     private String email_id;
@@ -18,38 +18,8 @@ public class StudentDTO {
     private String password;
     private Timestamp dateRegistered;
 
-    // Default Constructor
-    public StudentDTO() {
-    }
-
-    // Parameterized Constructor
-    public StudentDTO(int sId, String firstName, String lastName, String emailId, String contactNo, 
-                      String gender, Date dob, String address, String study, String hallType, 
-                      String seatNo, String password, Timestamp dateRegistered) {
-        this.sId = sId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email_id = emailId;
-        this.phone_no = contactNo;
-        this.gender = gender;
-        this.dob = dob;
-        this.address = address;
-        this.study = study;
-        this.hallType = hallType;
-        this.seatNo = seatNo;
-        this.password = password;
-        this.dateRegistered = dateRegistered;
-    }
 
     // Getters and Setters
-    public int getsId() {
-        return sId;
-    }
-
-    public void setsId(int sId) {
-        this.sId = sId;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -146,23 +116,22 @@ public class StudentDTO {
         this.dateRegistered = dateRegistered;
     }
 
-    // toString Method
-    @Override
-    public String toString() {
-        return "StudentDTO{" +
-                "sId=" + sId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailId='" + email_id + '\'' +
-                ", contactNo='" + phone_no + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dob=" + dob +
-                ", address='" + address + '\'' +
-                ", study='" + study + '\'' +
-                ", hallType='" + hallType + '\'' +
-                ", seatNo='" + seatNo + '\'' +
-                ", password='" + password + '\'' +
-                ", dateRegistered=" + dateRegistered +
-                '}';
-    }
+	public int getStudentId() {
+		return student_id;
+	}
+
+	public void setStudentId(int student_id) {
+		this.student_id = student_id;
+	}
+
+	@Override
+	public String toString() {
+		return "StudentDTO [student_id=" + student_id + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email_id=" + email_id + ", phone_no=" + phone_no + ", gender=" + gender + ", dob=" + dob
+				+ ", address=" + address + ", study=" + study + ", hallType=" + hallType + ", seatNo=" + seatNo
+				+ ", password=" + password + ", dateRegistered=" + dateRegistered + "]";
+	}
+
+ 
+   
 }

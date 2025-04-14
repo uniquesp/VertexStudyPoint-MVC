@@ -3,7 +3,11 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.JsonObject;
 import com.model.StudentDTO;
@@ -48,6 +52,81 @@ public class StudentDaoImplementation implements StudentDao{
 	public JsonObject loginStudent(StudentDTO studentdto) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<StudentDTO> getAllUsers(StudentDTO studentdto) {
+		List<StudentDTO> studentList = new ArrayList<>();
+		ResultSet resultSet = null;
+		String SELECT_ALL_USERS_SQL = "SELECT * FROM student WHERE is_deleted=0";
+		String SELECT_ONE_USER_SQL = "SELECT * FROM student WHERE is_deleted=0 AND student_id=?";
+		try {
+			Connection connection = DbConnection.createConnection();
+			Statement statement = connection.createStatement();
+			PreparedStatement preparedStatement = null;
+			if (studentdto.getStudentId() != 0) {
+				preparedStatement = connection.prepareStatement(SELECT_ONE_USER_SQL);
+				preparedStatement.setInt(1, studentdto.getStudentId());
+				resultSet = preparedStatement.executeQuery();
+			} else {
+				resultSet = statement.executeQuery(SELECT_ALL_USERS_SQL);
+			}
+			while (resultSet.next()) {
+				StudentDTO StudentDTO2 = new StudentDTO();
+				StudentDTO2.setStudentId(Integer.parseInt(resultSet.getString("student_id")));
+				StudentDTO2.setFirstName(resultSet.getString("student_first_name"));
+				StudentDTO2.setLastName(resultSet.getString("student_last_name"));
+				StudentDTO2.setEmailId(resultSet.getString("student_email"));
+				StudentDTO2.setContactNo(resultSet.getString("student_mobileno"));
+				StudentDTO2.setGender(resultSet.getString("student_gender"));
+				StudentDTO2.setDob(resultSet.getDate("student_birthdate"));
+				StudentDTO2.setAddress(resultSet.getString("student_address"));
+				StudentDTO2.setStudy(resultSet.getString("study"));			
+				studentList.add(StudentDTO2);
+			}
+			statement.close();
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return studentList;
+	}
+	
+	
+	@Override
+	public boolean deleteStudent(int studentId) {
+		boolean deleteStudent = false;
+		Connection connection = DbConnection.createConnection();
+		String DELETE_STUDENT_SQl = "UPDATE student SET is_deleted=1 WHERE student_id=?";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STUDENT_SQl);
+			preparedStatement.setInt(1, studentId);
+			deleteStudent = preparedStatement.executeUpdate() > 0;
+			preparedStatement.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+		return deleteStudent;
 	}
 
 }

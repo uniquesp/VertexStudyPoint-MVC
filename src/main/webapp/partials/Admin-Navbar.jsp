@@ -13,7 +13,7 @@
         </div>
         <i class="ri-notification-2-line"></i>
         <div class="profile">
-            <img src="assets/images/profile.jpg" alt="">
+            <img src="#" alt="">
         </div>
     </div>
 </section>
