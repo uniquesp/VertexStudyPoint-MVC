@@ -40,6 +40,9 @@ public class StudentController extends HttpServlet {
 			case "delete_student":
 				deleteStudent(request, response);
 				break;
+			case "display_feedbacks":
+				displayFeedback(request, response);
+				break;
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + operation);
 		}
@@ -92,10 +95,10 @@ public class StudentController extends HttpServlet {
 	
 	public void displayStudent(HttpServletRequest request, HttpServletResponse response) {
 		StudentDTO studentdto = new StudentDTO();
-		StudentService userServiceInterface = new StudentServiceImplementation();
+		StudentService studentinterface = new StudentServiceImplementation();
 		try {
 			PrintWriter writer = response.getWriter();
-			writer.write(userServiceInterface.getAllUser(studentdto).toString());
+			writer.write(studentinterface.getAllUser(studentdto).toString());
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			writer.close();
@@ -132,6 +135,20 @@ public class StudentController extends HttpServlet {
 		}
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
+	}
+	
+	public void displayFeedback(HttpServletRequest request, HttpServletResponse response) {
+		StudentDTO studentdto = new StudentDTO();
+		StudentService studentinterface = new StudentServiceImplementation();
+		try {
+			PrintWriter writer = response.getWriter();
+			writer.write(studentinterface.getAllFeedbacks(studentdto).toString());
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 		
 }

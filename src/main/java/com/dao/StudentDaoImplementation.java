@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonObject;
+import com.model.LeaveFormDTO;
 import com.model.StudentDTO;
 import com.util.DbConnection;
 
@@ -127,6 +128,114 @@ public class StudentDaoImplementation implements StudentDao{
 			}
 		}
 		return deleteStudent;
+	}
+
+	@Override
+	public List<StudentDTO> getAllFeedbacks(StudentDTO studentdto) {
+		List<StudentDTO> feedbackList = new ArrayList<>();
+		ResultSet resultSet = null;
+		String SELECT_ALL_USERS_SQL = "SELECT \r\n"
+				+ "  feedback.feedback_id,\r\n"
+				+ "  feedback.feedback_description,\r\n"
+				+ "  feedback.rating,\r\n"
+				+ "  student.student_id, \r\n"
+				+ "  student.student_first_name, \r\n"
+				+ "  student.student_last_name, \r\n"
+				+ "  student.student_email\r\n"
+				+ "FROM \r\n"
+				+ "  feedback\r\n"
+				+ "JOIN \r\n"
+				+ "  student ON feedback.student_id = student.student_id";
+		try {
+			Connection connection = DbConnection.createConnection();
+			Statement statement = connection.createStatement();
+			resultSet = statement.executeQuery(SELECT_ALL_USERS_SQL);
+		
+			while (resultSet.next()) {
+				StudentDTO StudentDTO2 = new StudentDTO();
+				StudentDTO2.setStudentId(Integer.parseInt(resultSet.getString("student_id")));
+				StudentDTO2.setFirstName(resultSet.getString("student_first_name"));
+				StudentDTO2.setLastName(resultSet.getString("student_last_name"));
+				StudentDTO2.setEmailId(resultSet.getString("student_email"));
+				StudentDTO2.setContactNo(resultSet.getString("student_mobileno"));
+				StudentDTO2.setFeedback_id(Integer.parseInt(resultSet.getString("feedback_id")));
+				StudentDTO2.setFeedback_description(resultSet.getString("feedback_description"));
+				StudentDTO2.setFeedback_rating(Integer.parseInt(resultSet.getString("rating")));
+				feedbackList.add(StudentDTO2);
+			}
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return feedbackList;
+	}
+
+	@Override
+	public List<LeaveFormDTO> getAllLeaveDetails(LeaveFormDTO leavedto) {
+		List<LeaveFormDTO> leaveDetailsList = new ArrayList<>();
+		ResultSet resultSet = null;
+		String SELECT_ALL_USERS_SQL = "SELECT \r\n"
+				+ "    reading_hall.hall_type,\r\n"
+				+ "    student.student_first_name,\r\n"
+				+ "    student.student_last_name,\r\n"
+				+ "    student.student_email,\r\n"
+				+ "    leavedetails.seat_no,\r\n"
+				+ "    leavedetails.leave_date\r\n"
+				+ "FROM \r\n"
+				+ "    leavedetails\r\n"
+				+ "JOIN \r\n"
+				+ "    reading_hall ON leavedetails.hall_id = reading_hall.hall_id\r\n"
+				+ "JOIN \r\n"
+				+ "		student ON leavedetails.student_id = student.student_id;\r\n";
+		 try {
+		        Connection connection = DbConnection.createConnection();
+		        Statement statement = connection.createStatement();
+		        resultSet = statement.executeQuery(SELECT_ALL_USERS_SQL);
+
+		        while (resultSet.next()) {
+		            LeaveFormDTO leaveFormDTO = new LeaveFormDTO();
+
+		            // Create and set StudentDTO
+		            StudentDTO studentDTO = new StudentDTO();
+		            studentDTO.setFirstName(resultSet.getString("student_first_name"));
+		            studentDTO.setLastName(resultSet.getString("student_last_name"));
+		            studentDTO.setEmailId(resultSet.getString("student_email"));
+		            studentDTO.setHallType(resultSet.getString("hall_type"));
+		            studentDTO.setSeatNo(resultSet.getString("seat_no"));
+		            
+		            // Set student inside LeaveFormDTO
+		            leaveFormDTO.setStudentdto(studentDTO);
+
+		            // Set leave date separately (if LeaveFormDTO also stores leaveDate)
+		            leaveFormDTO.setLibrary_leave_id((resultSet.getInt("leave_id")));
+		            leaveFormDTO.setLibrary_leave_date(resultSet.getDate("leave_date"));
+
+		            leaveDetailsList.add(leaveFormDTO);
+		        }
+		        statement.close();
+		        connection.close();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        try {
+		            if (resultSet != null) {
+		                resultSet.close();
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        }
+		    }
+		    return leaveDetailsList;
+		
 	}
 
 }

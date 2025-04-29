@@ -1,6 +1,4 @@
 package com.model;
-
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class StudentDTO {
@@ -16,10 +14,12 @@ public class StudentDTO {
     private String hallType;
     private String seatNo;
     private String password;
-    private Timestamp dateRegistered;
+	private int feedback_id;
+	private String feedback_description;
+	private int feedback_rating;
 
 
-    // Getters and Setters
+	// Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -108,14 +108,6 @@ public class StudentDTO {
         this.password = password;
     }
 
-    public Timestamp getDateRegistered() {
-        return dateRegistered;
-    }
-
-    public void setDateRegistered(Timestamp dateRegistered) {
-        this.dateRegistered = dateRegistered;
-    }
-
 	public int getStudentId() {
 		return student_id;
 	}
@@ -123,13 +115,38 @@ public class StudentDTO {
 	public void setStudentId(int student_id) {
 		this.student_id = student_id;
 	}
+	
+    public int getFeedback_id() {
+		return feedback_id;
+	}
+
+	public void setFeedback_id(int feedback_id) {
+		this.feedback_id = feedback_id;
+	}
+
+	public String getFeedback_description() {
+		return feedback_description;
+	}
+
+	public void setFeedback_description(String feedback_description) {
+		this.feedback_description = feedback_description;
+	}
+
+	public int getFeedback_rating() {
+		return feedback_rating;
+	}
+
+	public void setFeedback_rating(int feedback_rating) {
+		this.feedback_rating = feedback_rating;
+	}
 
 	@Override
 	public String toString() {
 		return "StudentDTO [student_id=" + student_id + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email_id=" + email_id + ", phone_no=" + phone_no + ", gender=" + gender + ", dob=" + dob
 				+ ", address=" + address + ", study=" + study + ", hallType=" + hallType + ", seatNo=" + seatNo
-				+ ", password=" + password + ", dateRegistered=" + dateRegistered + "]";
+				+ ", password=" + password + ", feedback_id=" + feedback_id + ", feedback_description="
+				+ feedback_description + ", feedback_rating=" + feedback_rating + "]";
 	}
 
  

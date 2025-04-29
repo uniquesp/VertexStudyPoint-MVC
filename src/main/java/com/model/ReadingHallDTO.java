@@ -1,26 +1,12 @@
 package com.model;
 
-import java.sql.Timestamp;
 
 public class ReadingHallDTO {
     private int hallId;
     private String hallType;
     private String seatNo;
     private String seatStatus;
-    private Timestamp dateRegistered;
 
-    // Default Constructor
-    public ReadingHallDTO() {
-    }
-
-    // Parameterized Constructor
-    public ReadingHallDTO(int hallId, String hallType, String seatNo, String seatStatus, Timestamp dateRegistered) {
-        this.hallId = hallId;
-        this.hallType = hallType;
-        this.seatNo = seatNo;
-        this.seatStatus = seatStatus;
-        this.dateRegistered = dateRegistered;
-    }
 
     // Getters and Setters
     public int getHallId() {
@@ -55,14 +41,6 @@ public class ReadingHallDTO {
         this.seatStatus = seatStatus;
     }
 
-    public Timestamp getDateRegistered() {
-        return dateRegistered;
-    }
-
-    public void setDateRegistered(Timestamp dateRegistered) {
-        this.dateRegistered = dateRegistered;
-    }
-
     // toString Method
     @Override
     public String toString() {
@@ -71,7 +49,6 @@ public class ReadingHallDTO {
                 ", hallType='" + hallType + '\'' +
                 ", seatNo='" + seatNo + '\'' +
                 ", seatStatus='" + seatStatus + '\'' +
-                ", dateRegistered=" + dateRegistered +
                 '}';
     }
 }
