@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.model.LeaveFormDTO;
 import com.model.StudentDTO;
 import com.service.StudentService;
 import com.service.StudentServiceImplementation;
@@ -42,6 +43,9 @@ public class StudentController extends HttpServlet {
 				break;
 			case "display_feedbacks":
 				displayFeedback(request, response);
+				break;
+			case "display_leavedetails":
+				displayLeaveRequest(request, response);
 				break;
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + operation);
@@ -143,6 +147,20 @@ public class StudentController extends HttpServlet {
 		try {
 			PrintWriter writer = response.getWriter();
 			writer.write(studentinterface.getAllFeedbacks(studentdto).toString());
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void displayLeaveRequest(HttpServletRequest request, HttpServletResponse response) {
+		LeaveFormDTO leaveFormdto = new LeaveFormDTO();
+		StudentService studentinterface = new StudentServiceImplementation();
+		try {
+			PrintWriter writer = response.getWriter();
+			writer.write(studentinterface.getAllLeaveDetails(leaveFormdto).toString());
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			writer.close();
