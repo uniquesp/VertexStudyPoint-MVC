@@ -5,112 +5,78 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class StaffDTO {
-    private int stId;
-    private String stName;
-    private String emailId;
-    private String contactNumber;
-    private String stWork;
-    private BigDecimal stSalary;
-    private Date joiningDate;
+    private int staff_id;
+    private String staff_name;
+    private String staff_email;
+    private String phone_no;
+    private String staff_work;
+    private BigDecimal staff_salary;
+    private Date joining_date;
     private String gender;
-    private String addr;
-    private Timestamp dateRegistered;
+    private String address;
+    
+    
+    
+	public int getStaff_id() {
+		return staff_id;
+	}
+	public void setStaff_id(int staff_id) {
+		this.staff_id = staff_id;
+	}
+	public String getStaff_name() {
+		return staff_name;
+	}
+	public void setStaff_name(String staff_name) {
+		this.staff_name = staff_name;
+	}
+	public String getStaff_email() {
+		return staff_email;
+	}
+	public void setStaff_email(String staff_email) {
+		this.staff_email = staff_email;
+	}
+	public String getPhone_no() {
+		return phone_no;
+	}
+	public void setPhone_no(String phone_no) {
+		this.phone_no = phone_no;
+	}
+	public String getStaff_work() {
+		return staff_work;
+	}
+	public void setStaff_work(String staff_work) {
+		this.staff_work = staff_work;
+	}
+	public BigDecimal getStaff_salary() {
+		return staff_salary;
+	}
+	public void setStaff_salary(BigDecimal staff_salary) {
+		this.staff_salary = staff_salary;
+	}
+	public Date getJoining_date() {
+		return joining_date;
+	}
+	public void setJoining_date(Date joining_date) {
+		this.joining_date = joining_date;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "StaffDTO [staff_id=" + staff_id + ", staff_name=" + staff_name + ", staff_email=" + staff_email
+				+ ", phone_no=" + phone_no + ", staff_work=" + staff_work + ", staff_salary=" + staff_salary
+				+ ", joining_date=" + joining_date + ", gender=" + gender + ", address=" + address + "]";
+	}
 
-    // Getters and Setters
-    public int getStId() {
-        return stId;
-    }
-
-    public void setStId(int stId) {
-        this.stId = stId;
-    }
-
-    public String getStName() {
-        return stName;
-    }
-
-    public void setStName(String stName) {
-        this.stName = stName;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getStWork() {
-        return stWork;
-    }
-
-    public void setStWork(String stWork) {
-        this.stWork = stWork;
-    }
-
-    public BigDecimal getStSalary() {
-        return stSalary;
-    }
-
-    public void setStSalary(BigDecimal stSalary) {
-        this.stSalary = stSalary;
-    }
-
-    public Date getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(Date joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public Timestamp getDateRegistered() {
-        return dateRegistered;
-    }
-
-    public void setDateRegistered(Timestamp dateRegistered) {
-        this.dateRegistered = dateRegistered;
-    }
-
-    @Override
-    public String toString() {
-        return "StaffDTO{" +
-                "stId=" + stId +
-                ", stName='" + stName + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                ", stWork='" + stWork + '\'' +
-                ", stSalary=" + stSalary +
-                ", joiningDate=" + joiningDate +
-                ", gender='" + gender + '\'' +
-                ", addr='" + addr + '\'' +
-                ", dateRegistered=" + dateRegistered +
-                '}';
-    }
 }
 
