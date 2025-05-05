@@ -6,7 +6,6 @@ import com.model.StudentDTO;
 
 public interface StudentService {
 	public JsonObject registerStudent(StudentDTO studentdto );
-	public JsonObject updateStudentProfile(StudentDTO studentdto);
 	public JsonObject getAllUser(StudentDTO studentdto);
 	public JsonObject studentProfileDelete(int StudentId);
 	public JsonObject getAllFeedbacks(StudentDTO studentdto);

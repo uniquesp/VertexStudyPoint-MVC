@@ -7,7 +7,7 @@ import com.model.LeaveFormDTO;
 import com.model.StudentDTO;
 
 public interface StudentDao {
-	public boolean registerOrUpdateStudent(StudentDTO studentDTO);
+	public boolean registerStudent(StudentDTO studentdto);
 	public JsonObject loginStudent(StudentDTO studentdto);
 	public List<StudentDTO> getAllUsers(StudentDTO studentdto);
 	public boolean deleteStudent(int studentId);
