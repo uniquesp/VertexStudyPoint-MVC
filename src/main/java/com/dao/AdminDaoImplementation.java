@@ -27,6 +27,7 @@ public class AdminDaoImplementation implements AdminDao {
 			if (result.next()) {
 				jsonObject.addProperty("success", true);
 				jsonObject.addProperty("id", result.getInt("id"));
+				
 			}
 			result.close();
 			preparedStatement.close();
