@@ -16,11 +16,11 @@ public class StudentServiceImplementation implements StudentService{
 		JsonObject responseJson = new JsonObject();
 		StudentDao studentdao  = new StudentDaoImplementation();
 		try {
-			boolean userInserted = studentdao.registerStudent(studentdto);
+			boolean isStudentRegistered = studentdao.registerOrUpdateStudent(studentdto);
 
-			if (userInserted) {
+			if (isStudentRegistered) {
 				responseJson.addProperty("success", true);
-				responseJson.addProperty("message", "User registered successfully");
+				responseJson.addProperty("message", "Student registered successfully");
 			} else {
 				responseJson.addProperty("success", false);
 				responseJson.addProperty("message", "Failed to register Student");
@@ -28,11 +28,34 @@ public class StudentServiceImplementation implements StudentService{
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseJson.addProperty("success", false);
-			responseJson.addProperty("message", "An error occurred during student process");
+			responseJson.addProperty("message", "An error occurred during process");
 		}
 
 		return responseJson;
 	}
+
+	@Override
+	public JsonObject updateStudentProfile(StudentDTO studentdto) {
+		JsonObject responseJson = new JsonObject();
+		StudentDao studentdao  = new StudentDaoImplementation();
+		try {
+			boolean isStudentUpdated = studentdao.registerOrUpdateStudent(studentdto);
+
+			if (isStudentUpdated) {
+				responseJson.addProperty("success", true);
+				responseJson.addProperty("message", "Student Updated successfully");
+			} else {
+				responseJson.addProperty("success", false);
+				responseJson.addProperty("message", "Failed to register Student");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseJson.addProperty("success", false);
+			responseJson.addProperty("message", "An error occurred during process");
+		}
+
+		return responseJson;
+	}	
 
 	@Override
 	public JsonObject getAllUser(StudentDTO studentdto) {
